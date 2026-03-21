@@ -177,7 +177,7 @@ INSERT INTO Manutencao (id_manutencao, ofcn_terc, pcas_trcds, custo, tipo_serv, 
 (14, FALSE, FALSE,  90.00, 'Limpeza',        90.00, '2024-05-25',  1),
 (15, TRUE,  TRUE,  160.00, 'Preventiva',    160.00, '2024-06-02', 12);
  
-
+ 
 -- Reajuste de 8% para funcionários contratados antes de 2020
 UPDATE Funcionario
 SET salario = ROUND(salario * 1.08, 2)
@@ -189,6 +189,8 @@ SET
     dspnb = TRUE,
     km    = 21350
 WHERE id_veic = 4;
+ 
+
  
 -- C1: Conta quantos clientes existem em cada estado (UF)
 SELECT
@@ -314,8 +316,8 @@ FROM Manutencao m
 JOIN Veiculo v ON v.id_veic = m.id_veic
 GROUP BY v.modelo, v.placa
 ORDER BY custo_total DESC;
-
  
+
 -- JOIN 1: INNER JOIN – lista contratos ativos com cliente, funcionário e veículo
 SELECT
     c.id_contrato,
