@@ -77,10 +77,6 @@ CREATE TABLE Manutencao (
     CONSTRAINT fk_manutencao_veiculo FOREIGN KEY (id_veic) REFERENCES Veiculo (id_veic)
 );
  
--- ============================================================
--- INSERÇÃO DE DADOS
--- ============================================================
- 
 -- Inserindo os 13 clientes cadastrados na locadora
 INSERT INTO Cliente (id_cliente, cpf, nome_completo, data_nascimento, cnh, telefone, email, endereco) VALUES
 (1,  '111.222.333-01', 'Ana Paula Ferreira',    '1990-03-15', '0001112220',  '(83)99001-1001', 'ana.ferreira@email.com',  'Rua das Flores, 10, João Pessoa-PB'),
@@ -181,10 +177,7 @@ INSERT INTO Manutencao (id_manutencao, ofcn_terc, pcas_trcds, custo, tipo_serv, 
 (14, FALSE, FALSE,  90.00, 'Limpeza',        90.00, '2024-05-25',  1),
 (15, TRUE,  TRUE,  160.00, 'Preventiva',    160.00, '2024-06-02', 12);
  
--- ============================================================
--- ATUALIZAÇÕES (UPDATE)
--- ============================================================
- 
+
 -- Reajuste de 8% para funcionários contratados antes de 2020
 UPDATE Funcionario
 SET salario = ROUND(salario * 1.08, 2)
@@ -196,10 +189,6 @@ SET
     dspnb = TRUE,
     km    = 21350
 WHERE id_veic = 4;
- 
--- ============================================================
--- CONSULTAS DE AGREGAÇÃO / AGRUPAMENTO
--- ============================================================
  
 -- C1: Conta quantos clientes existem em cada estado (UF)
 SELECT
@@ -325,10 +314,7 @@ FROM Manutencao m
 JOIN Veiculo v ON v.id_veic = m.id_veic
 GROUP BY v.modelo, v.placa
 ORDER BY custo_total DESC;
- 
--- ============================================================
--- CONSULTAS COM JOIN
--- ============================================================
+
  
 -- JOIN 1: INNER JOIN – lista contratos ativos com cliente, funcionário e veículo
 SELECT
